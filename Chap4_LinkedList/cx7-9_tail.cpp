@@ -10,7 +10,7 @@ void List::insert(const ListElementType &elem)
     assert(addedNode);
     addedNode->elem = elem;
 
-    if(head == 0 && tail == 0) { // 최초 삽입 시
+    if(head == 0 && tail == 0) { // 최초 삽입 시 tail 관리.
         head = addedNode;
         tail = addedNode;
     }
@@ -27,7 +27,7 @@ void List::insert(const ListElementType &elem)
         addedNode->next = pred->next;
         pred->next = addedNode;
         
-        if(addedNode->next == 0) {
+        if(addedNode->next == 0) { // 최댓값 tail관리.
             tail = addedNode;
         }
         

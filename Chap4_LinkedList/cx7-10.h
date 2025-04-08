@@ -7,7 +7,7 @@ class List {
         void insert(const ListElementType &elem);
         bool first(ListElementType &elem);
         bool next(ListElementType &elem);
-
+        void remove(const ListElementType &target);
 
     private:
         struct Node;
@@ -17,6 +17,5 @@ class List {
             Link next;
         };
         Link head;
-        Link tail;
         Link current;
 };

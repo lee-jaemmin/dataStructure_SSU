@@ -22,7 +22,8 @@
             "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
             "logging": {
                 "engineLogging": true
-            }
+            },
         }
+          
     ]
 }

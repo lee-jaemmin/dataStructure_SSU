@@ -1,4 +1,4 @@
-typedef int ListElementType;
+typedef int ListElementType; // int를 List~type으로 정의하겠다.
 
 const int maxListSize = 1000;
 
