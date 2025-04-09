@@ -2,6 +2,7 @@
 #include "List.h"
 #include <assert.h>
 
+using namespace std;
 
 List::List() //생성자
 {
@@ -13,6 +14,7 @@ List::List() //생성자
 
 void List::insert(ListElementType &elem)
 {
+    cout << endl;
     Link addedNode = new Node;
     addedNode->elem = elem;
 
@@ -24,6 +26,10 @@ void List::insert(ListElementType &elem)
         addedNode->next = nullptr;
         head = addedNode;
         tail = addedNode;
+        cout << "[" << addedNode->elem <<"의 이전 노드]\n";
+        cout << addedNode->prev << endl;
+        cout << "[" << addedNode->elem <<"의 다음 노드]\n";
+        cout << addedNode->next << endl;
         return;
     }
 
@@ -33,6 +39,10 @@ void List::insert(ListElementType &elem)
         pred->prev = addedNode;
         addedNode->prev = nullptr;
         head = addedNode;
+        cout << "[" << addedNode->elem <<"의 이전 노드]\n";
+        cout << addedNode->prev << endl;
+        cout << "[" << addedNode->elem <<"의 다음 노드]\n";
+        cout << addedNode->next->elem << endl;
         return;
     }
 
@@ -47,6 +57,10 @@ void List::insert(ListElementType &elem)
         tail->next = addedNode;
         addedNode->next = nullptr;
         tail = addedNode;
+        cout << "[" << addedNode->elem <<"의 이전 노드]\n";
+        cout << addedNode->prev->elem << endl;
+        cout << "[" << addedNode->elem <<"의 다음 노드]\n";
+        cout << addedNode->next << endl;
         return;
     }
 
@@ -56,8 +70,10 @@ void List::insert(ListElementType &elem)
     pred->next->prev = addedNode;
     pred->next = addedNode;
     
-
-        
+    cout << "[" << addedNode->elem <<"의 이전 노드]\n";
+    cout << addedNode->prev->elem << endl;
+    cout << "[" << addedNode->elem <<"의 다음 노드]\n";
+    cout << addedNode->next->elem << endl;    
 }
 
 bool List::first(ListElementType &elem) 
@@ -65,6 +81,7 @@ bool List::first(ListElementType &elem)
     assert(head); // if no head, something is very wrong!
   
     if (head == 0) {
+        cout << "배열 원소 없음!" << endl;
         return false;
     }
     else {
@@ -83,6 +100,7 @@ bool List::next(ListElementType &elem)
     // After each call, current always points to the item
     // that next has just returned.
     if (current->next == 0){
+        cout << "다음 원소 없음!" << endl;
         return false;
     } // no next element available
     else {

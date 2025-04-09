@@ -17,7 +17,7 @@ int main()
         cin >> i;
     }
 
-    cout << "Here are the itmes in the list\n";
+    cout << "\nHere are the itmes in the list\n";
     ListElementType elem;
     bool notEmpty(l.first(elem)); // 비어있는지 확인. 일단 정수 변수 쓰레기값 넘김? 
     while(notEmpty) { // 안 비었다면
