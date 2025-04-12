@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "myCstudent.h"
 
-using namespace std; // ÀÌ°Å ¾øÀ¸¸é swap¿¡ »¡°£ ÁÙ »ı±è.. ¿ÖÁö????
+using namespace std; // ì´ê±° ì—†ìœ¼ë©´ swapì— ë¹¨ê°„ ì¤„ ìƒê¹€.. ì™œì§€????
 
 template <typename T, size_t N>
 void printout(T (&ary)[N])
@@ -24,7 +24,7 @@ void printout(T (&ary)[N])
 }
 
 
-//Àç±ÍÈ£Ãâ, ÇÔ¼ö ±æÀÌ ¸Å°³º¯¼ö, ±³Â÷µÇ¸é high¿Í low ±³Ã¼, high°¡
+//ì¬ê·€í˜¸ì¶œ, í•¨ìˆ˜ ê¸¸ì´ ë§¤ê°œë³€ìˆ˜, êµì°¨ë˜ë©´ highì™€ low êµì²´, highê°€
 template <typename T, size_t N>
 void quicksort(T (&ary)[N], int start, int end)
 {
@@ -34,26 +34,26 @@ void quicksort(T (&ary)[N], int start, int end)
     int high = end;
     int low = start + 1;
 
-    cout << endl << "[Partition Àü] ";
-    printout(ary); //partition Àü Ãâ·Â
+    cout << endl << "[Partition ì „] ";
+    printout(ary); //partition ì „ ì¶œë ¥
 
     while(low < high){
-        while(low < end && ary[pivot] > ary[low]) { // ary[pivot] > ary[low]¿¡ µîÈ£ ºÙ¾îµµ µÊ. ³»¸²Â÷¼ø Á¤·ÄÇÒ°Å¸é ¾ÈµÉ µí.
+        while(low < end && ary[pivot] > ary[low]) { // ary[pivot] > ary[low]ì— ë“±í˜¸ ë¶™ì–´ë„ ë¨. ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í• ê±°ë©´ ì•ˆë  ë“¯.
             low++;
         }
-        while(high > 0 && ary[pivot] < ary[high]) { // ary[pivot] < ary[high]¿¡ µîÈ£ ºÙÀ¸¸é ¾ÈµÇ´Â ÀÌÀ¯: pivotÀÌ ÃÖ¼Ú°ªÀÏ °æ¿ì high°¡ -1±îÁö ÀÛ¾ÆÁü.
+        while(high > 0 && ary[pivot] < ary[high]) { // ary[pivot] < ary[high]ì— ë“±í˜¸ ë¶™ìœ¼ë©´ ì•ˆë˜ëŠ” ì´ìœ : pivotì´ ìµœì†Ÿê°’ì¼ ê²½ìš° highê°€ -1ê¹Œì§€ ì‘ì•„ì§.
             high--;
         }
 
-        if(low >= high) break; // ¸¸¾à low, high À§Ä¡°¡ µÚ¹Ù²î¾úÀ¸¸é ±× Áï½Ã break
+        if(low >= high) break; // ë§Œì•½ low, high ìœ„ì¹˜ê°€ ë’¤ë°”ë€Œì—ˆìœ¼ë©´ ê·¸ ì¦‰ì‹œ break
 
         swap(ary[low], ary[high]);
     }
 
     swap(ary[high], ary[pivot]);    
 
-    cout << endl << "[Partition ÈÄ] ";
-    printout(ary); //partition ÈÄ Ãâ·Â
+    cout << endl << "[Partition í›„] ";
+    printout(ary); //partition í›„ ì¶œë ¥
     cout << endl;
     
     quicksort(ary, start, high - 1);
@@ -72,10 +72,10 @@ int main()
         string name;
         double gpa;
     
-        cout << "[" << i + 1 << "¹øÂ° ÇĞ»ı]" << endl;
-        cout << "ÇĞ¹ø: ";
+        cout << "[" << i + 1 << "ë²ˆì§¸ í•™ìƒ]" << endl;
+        cout << "í•™ë²ˆ: ";
         cin >> id;
-        cout << "ÀÌ¸§: ";
+        cout << "ì´ë¦„: ";
         cin >> name;
         cout << "GPA: ";
         cin >> gpa;
