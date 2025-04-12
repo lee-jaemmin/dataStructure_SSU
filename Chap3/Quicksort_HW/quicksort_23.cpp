@@ -30,7 +30,7 @@ void quicksort(T (&ary)[N], int start, int end)
     cout << endl << "[Partition 전] ";
     printout(ary); //partition 전 출력
 
-    while(low < high){
+    while(low <= high){
         while(low < end && ary[pivot] > ary[low]) { // ary[pivot] > ary[low]에 등호 붙어도 됨. 내림차순 정렬할거면 안될 듯.
             low++;
         }
@@ -58,13 +58,13 @@ void quicksort(T (&ary)[N], int start, int end)
 
 int main()
 {
-    double ary[] = {4.0, 10.4, 9.5, 1.3, 8.5, 5.1, 7.5, 2.1, 3.5, 6.5};
+    double ary[] = {6, 3, 1, 4, 5};
     
-    quicksort(ary, 0, 9);
+    quicksort(ary, 0, 4);
 
     cout << endl;
 
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 5; i++) {
         std::cout << ary[i] << " ";
     }
 
