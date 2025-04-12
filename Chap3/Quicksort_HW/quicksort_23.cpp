@@ -21,7 +21,7 @@ void printout(T (&ary)[N])
 template <typename T, size_t N>
 void quicksort(T (&ary)[N], int start, int end)
 {
-    if(end - start <= 0) return;
+    if(start >= end) return; //end - start <= 0
 
     int pivot = start;
     int high = end;
@@ -34,7 +34,7 @@ void quicksort(T (&ary)[N], int start, int end)
         while(low < end && ary[pivot] > ary[low]) { // ary[pivot] > ary[low]에 등호 붙어도 됨. 내림차순 정렬할거면 안될 듯.
             low++;
         }
-        while(high > 0 && ary[pivot] < ary[high]) { // ary[pivot] < ary[high]에 등호 붙으면 안되는 이유: pivot이 최솟값일 경우 high가 -1까지 작아짐.
+        while(high > start && ary[pivot] < ary[high]) { // ary[pivot] < ary[high]에 등호 붙으면 안되는 이유: pivot이 최솟값일 경우 high가 -1까지 작아짐.
             high--;
         }
 
@@ -47,6 +47,13 @@ void quicksort(T (&ary)[N], int start, int end)
 
     cout << endl << "[Partition 후] ";
     printout(ary); //partition 후 출력
+
+
+
+
+
+
+    
     cout << endl;
     
     quicksort(ary, start, high - 1);
