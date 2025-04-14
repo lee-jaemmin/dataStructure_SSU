@@ -1,4 +1,3 @@
-#include <iostream>
 #include <algorithm>
 
 //20212861 이재민

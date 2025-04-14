@@ -1,4 +1,3 @@
-#include <iostream>
 #include "cx8-3.h"
 #include <assert.h>
 

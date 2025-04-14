@@ -1,6 +1,7 @@
-#include <iostream>
 #include "linkedList.h"
 #include <assert.h>
+
+//20212861 이재민민
 
 List::List()
 {
@@ -14,15 +15,26 @@ void List::insert(ListElementType &elem)
     Link addedNode = new Node;
     addedNode->elem = elem;
 
-    if(head == 0) { // 최초 삽입이다.
+    /* if(head == 0) { // 최초 삽입이다.
         head = addedNode;
-        tail = addedNode;
     }
     else {
         tail->next = addedNode;
-        addedNode->next = nullptr;
-        tail = addedNode;
     }
+    tail = addedNode;
+    addedNode->next = nullptr; */
+
+    // head에 추가하는 과정 구현
+    
+    //최초 삽입이면 
+    if(head == nullptr) {
+        tail = addedNode;
+        tail->next = nullptr;
+    }
+    else {
+        addedNode->next = head;
+    }
+    head = addedNode;
 }
 
 bool List::first(ListElementType &elem) // 처음 호출 됐을 때.
@@ -50,4 +62,16 @@ bool List::next(ListElementType &elem)
         elem = current->elem;
         return true;
     }
+}
+
+List::~List()
+{
+    // 맨 앞부터 소멸시킨다.
+    while(head != 0) {
+        Link delNode; // 삭제할 주소의 노드 포인터 선언
+        delNode = head; // head 주소를 delNode에 넣어줌
+        head = head->next; // head 하나 증가.
+        delete delNode;
+    }
+
 }

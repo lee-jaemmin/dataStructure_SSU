@@ -1,5 +1,3 @@
-#include <iostream>
-
 #ifndef __MB_CX_8_3__
 #define __MB_CX_8_3__
 

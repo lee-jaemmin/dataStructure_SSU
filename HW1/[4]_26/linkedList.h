@@ -1,7 +1,6 @@
-#include <iostream>
-
 typedef int ListElementType;
 
+//20212861 이재민
 
 class List
 {
@@ -10,6 +9,7 @@ class List
         void insert(ListElementType &elem);
         bool first(ListElementType &elem);
         bool next(ListElementType &elem);
+        ~List(); // 소멸자 정의.
     private:
         struct Node;
         typedef Node* Link;
