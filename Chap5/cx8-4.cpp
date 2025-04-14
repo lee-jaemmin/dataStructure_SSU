@@ -13,14 +13,14 @@ void Stack <StackElementType>::push(StackElementType item)
 {
     ++topIndex;
     // 배열 초과 방지
-    assert(topIndex < maxStackSize);
+    assert(!isFull())
     stackArray[topIndex] = item;
 }
 
 template <typename StackElementType>
 StackElementType Stack <StackElementType>::pop()
 {
-    assert(topIndex >= 0);
+    assert(!isEmpty());
     int returnIndex(topIndex);
     --topIndex;
     return stackArray[returnIndex];
@@ -28,7 +28,7 @@ StackElementType Stack <StackElementType>::pop()
 template <typename StackElementType>
 StackElementType Stack<StackElementType>::top()
 {
-    assert(topIndex >= 0);
+    assert(!isEmpty());
     return stackArray[topIndex];
 }
 

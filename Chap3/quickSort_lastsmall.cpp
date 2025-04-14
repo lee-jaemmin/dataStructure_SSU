@@ -14,9 +14,10 @@ void quicksort(int ary[], int start, int end)
     int lastSmall = pivot;
 
     while(i <= end) {
-        if(ary[pivot] < ary[i]) {
-            lastSmall++;
-        }
+        if(ary[i] < ary[pivot]) { // 더 작은 원소를 찾으면
+            lastSmall++; // lastSmall 하나 증가. (작은 원소가 앞으로 갈 공간을 만들어준다고 생각)
+            swap(ary[lastSmall], ary[i]); // 작은 원소 앞으로 보내기
+        } 
         i++;
     }
     

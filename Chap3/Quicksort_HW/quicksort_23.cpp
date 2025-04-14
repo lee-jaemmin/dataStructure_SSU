@@ -1,7 +1,9 @@
 #include <iostream>
 #include <algorithm>
 
-using namespace std; // 이거 없으면 swap에 빨간 줄 생김.. 왜지????
+//20212861 이재민
+
+using namespace std; 
 
 template <typename T, size_t N>
 void printout(T (&ary)[N])
@@ -17,55 +19,52 @@ void printout(T (&ary)[N])
 }
 
 
-//재귀호출, 함수 길이 매개변수, 교차되면 high와 low 교체, high가
-template <typename T, size_t N>
-void quicksort(T (&ary)[N], int start, int end)
+template <class ListType>
+int partition(ListType (&ary), int start, int end)
 {
-    if(start >= end) return; //end - start <= 0
-
     int pivot = start;
-    int high = end;
-    int low = start + 1;
+    int i = pivot + 1;
+    int lastSmall = pivot;
 
-    cout << endl << "[Partition 전] ";
-    printout(ary); //partition 전 출력
-
-    while(low <= high){
-        while(low < end && ary[pivot] > ary[low]) { // ary[pivot] > ary[low]에 등호 붙어도 됨. 내림차순 정렬할거면 안될 듯.
-            low++;
-        }
-        while(high > start && ary[pivot] < ary[high]) { // ary[pivot] < ary[high]에 등호 붙으면 안되는 이유: pivot이 최솟값일 경우 high가 -1까지 작아짐.
-            high--;
-        }
-
-        if(low >= high) break; // 만약 low, high 위치가 뒤바뀌었으면 그 즉시 break
-
-        swap(ary[low], ary[high]);
+    while(i <= end) {
+        if(ary[i] < ary[pivot]) { // 더 작은 원소를 찾으면
+            lastSmall++; // lastSmall 하나 증가. (작은 원소가 앞으로 갈 공간을 만들어준다고 생각)
+            swap(ary[lastSmall], ary[i]); // 작은 원소 앞으로 보내기
+        } 
+        i++;
     }
 
-    swap(ary[high], ary[pivot]);    
+    swap(ary[pivot], ary[lastSmall]);
+    cout << endl << "[Partition 후]" << endl;
+    printout(ary);
 
-    cout << endl << "[Partition 후] ";
-    printout(ary); //partition 후 출력
-
-
-
-
-
-
-    
-    cout << endl;
-    
-    quicksort(ary, start, high - 1);
-    quicksort(ary, high + 1, end);
-
+    return lastSmall;
 }
+
+template <class ListType>
+void quicksort(ListType (&ary), int start, int end)
+{
+    if(start >= end) return;
+
+    cout << endl << "[Partition 전]" << endl;
+    printout(ary);
+
+    int split = partition(ary, start, end);
+
+    cout << endl << "[Partition 후]" << endl;
+    printout(ary);
+
+    quicksort(ary, start, split-1);
+    quicksort(ary, split+1, end);
+    
+}
+
 
 
 
 int main()
 {
-    double ary[] = {6, 3, 1, 4, 5};
+    double ary[] = {6.4, 3.1, 1.5, 4.6, 5.9};
     
     quicksort(ary, 0, 4);
 
