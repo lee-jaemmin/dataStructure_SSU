@@ -6,7 +6,7 @@ class List
 {
     public:
         List();
-        void insert(ListElementType &elem);
+        void insert(const ListElementType &elem);
         bool first(ListElementType &elem);
         bool next(ListElementType &elem);
         ~List(); // 소멸자 정의.
