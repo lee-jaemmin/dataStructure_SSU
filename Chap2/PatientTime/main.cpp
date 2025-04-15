@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Time.cpp"
 
+//20212861 이재민 
+
 using namespace std;
 
 int main() {
@@ -13,7 +15,7 @@ int main() {
 
         cout << "Enter arrival time: ";
         arrival.readTime(errorFlag);
-
+    
         while (errorFlag) {
             cout << "Arrival time was incorrectly formatted; try again: ";
             arrival.readTime(errorFlag);
@@ -39,7 +41,17 @@ int main() {
     cout << "Total waiting time: " << totalWaitingTime << " minutes.\n";
     cout << "Average wait is " << totalWaitingTime / numberOfVisits << " minutes.\n";
 
-    addTime(numberOfVisits, totalWaitingTime);
+    
+    cout << "\nEnter the time you arrived\n";
+
+    Time lastArrival;
+    bool errorFlag;
+
+    lastArrival.readTime(errorFlag);
+
+    lastArrival.addTimes(lastArrival, (totalWaitingTime/numberOfVisits));
+
+    
 
     return 0;
 }

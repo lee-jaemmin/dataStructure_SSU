@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Time.h"
 
+//20212861 이재민 
+
 using namespace std;
 
 void Time::readTime(bool &errorFlag)
@@ -51,7 +53,14 @@ int Time::subtractTimes(Time t)
 }
 
 
-void addTime(int numberOfVisits, int totalWaitingTime)
+void Time::addTimes(Time t, int avgTime)
 {
-    cout << "예상 대기 시간: " << totalWaitingTime/numberOfVisits;
+    int time = t.minutes + avgTime;
+    int hour, minutes;
+
+    hour = time / 60;
+    minutes = time % 60;
+
+    cout << "\nYour expected seen by doctor time is " << hour << ":" << minutes << endl;
+
 }
