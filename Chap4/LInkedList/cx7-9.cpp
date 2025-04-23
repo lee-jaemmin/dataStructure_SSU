@@ -18,9 +18,9 @@ void List::insert(const ListElementType &elem)
         Link pred = head; // pred를 맨 앞 원소에 연결
         while(pred->next != 0 && pred->next->elem <= addedNode->elem) {
             pred = pred->next; // 다음 꺼
-            addedNode->next = pred->next;
-            pred->next = addedNode;
         }
+        addedNode->next = pred->next;
+        pred->next = addedNode;
         
     }
 

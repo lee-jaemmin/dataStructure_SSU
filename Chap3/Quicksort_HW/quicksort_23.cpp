@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 
 //20212861 이재민
 
@@ -33,6 +34,7 @@ int partition(ListType (&ary), int start, int end)
         i++;
     }
 
+  
     swap(ary[pivot], ary[lastSmall]);
     cout << endl << "[Partition 후]" << endl;
     printout(ary);

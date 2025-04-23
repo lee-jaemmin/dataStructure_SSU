@@ -12,7 +12,7 @@ List::List() //생성자
 }
 
 
-void List::insert(ListElementType &elem)
+/*void List::insert(ListElementType &elem)
 {
     cout << endl;
     Link addedNode = new Node;
@@ -74,6 +74,36 @@ void List::insert(ListElementType &elem)
     cout << addedNode->prev->elem << endl;
     cout << "[" << addedNode->elem <<"의 다음 노드]\n";
     cout << addedNode->next->elem << endl;    
+} */
+
+void List::insert(const ListElementType &elem)
+{
+    //새 노드 생성, 데이터 삽입
+    Link addedNode = new Node;
+    addedNode->elem = elem;
+    Link pred(head);
+
+    while(!isEmpty() && !isEnd() && pred->elem < addedNode->elem && pred->next->elem < addedNode->elem) {
+        pred = pred->next; 
+    }
+    
+    //최초 혹은 최소
+    if(head == pred) {
+        // 최초라면
+        if(head == 0) {
+            tail = addedNode;
+        } 
+        addedNode->next = head;
+        head = addedNode;
+    } // 최대일 경우 
+    else if (pred->next == 0) { 
+        tail = addedNode;
+        addedNode->next = pred->next;
+        pred->next = addedNode;
+    } else { // ordinary
+        addedNode->next = pred->next;
+        pred->next = addedNode;
+    }    
 }
 
 bool List::first(ListElementType &elem) 
@@ -108,4 +138,14 @@ bool List::next(ListElementType &elem)
     elem = current->elem;
     return true;
     }
+}
+
+bool List::isEmpty()
+{
+    return (head == 0);    
+}
+
+bool List::isEnd()
+{
+    return (pred->next == 0);
 }

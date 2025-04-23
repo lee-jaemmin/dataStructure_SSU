@@ -9,7 +9,9 @@ class List
         bool first(ListElementType &elem); // 첫번째 가져오는 함수 선언.
         bool next(ListElementType &elem); // 다음꺼 가져오는 함수 선언.
         bool prev(ListElementType &elem); // 이전꺼 가져오는 함수 선언.
-        void insert(ListElementType &elem); // 삽입 하는 함수 선언.
+        void insert(const ListElementType &elem); // 삽입 하는 함수 선언.
+        bool isEmpty();
+        bool isEnd();
 
     private:
         

@@ -2,15 +2,15 @@
 
 #include <iostream>
 #include <string>
-#include <cctype>     // isdigit
-#include "stack.h"    // 사용자 정의 스택 헤더
+#include <cctype>     // for isdigit
+#include <stack>    // 라이브러리 가져오기
 
 using namespace std;
 
 int main() {
     cout << "Input RPN Equation:" << endl;
 
-    Stack <int> s;
+    stack <int> s; //s 소문자 
     double op1, op2;
     char c;
 
@@ -20,8 +20,8 @@ int main() {
             s.push(op1); 
         } else {
             cin >> c;  // 연산자 읽기
-            op2 = s.pop();
-            op1 = s.pop();
+            op2 = s.top(); s.pop(); // 라이브러리 사용시 top으로 읽어오고 pop으로 지우기
+            op1 = s.top(); s.pop(); // 라이브러리에서 pop은 remove의 역할만 하고 때문에!
 
             switch (c) {
                 case '+': s.push(op1 + op2); break;
@@ -47,6 +47,6 @@ int main() {
         }
     }
 
-    cout << "Result: " << s.pop() << endl;
+    cout << "Result: " << s.top() << endl;
     return 0;
 }
