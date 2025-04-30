@@ -1,4 +1,4 @@
-#include "aryQueue.h"
+#include "aryQueue_cnt.h"
 #include <iostream>
 
 using namespace std;

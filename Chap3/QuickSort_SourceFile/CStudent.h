@@ -1,4 +1,3 @@
-// 클래스 CStudent 선언부
 
 #pragma once
 #include <iostream>
