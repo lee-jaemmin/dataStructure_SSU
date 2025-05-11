@@ -1,3 +1,4 @@
+#include <assert.h>
 const int maxQueue = 200;
 
 template <class queueElementType>
@@ -10,6 +11,7 @@ class Queue
         queueElementType front();
         bool isEmpty();
         bool isFull();
+        ~Queue();
 
     private:
         int f;
@@ -66,3 +68,9 @@ bool Queue <queueElementType>::isFull()
     return (f == nextPos(r));
 }
 
+template <class QueueElementType>
+Queue <QueueElementType>::~Queue()
+{
+    //여기서는 정적 배열이라 딱히 필요 없음.
+    //LinkedList는 동적 할당이라 무조건 만들어줘야함.
+}

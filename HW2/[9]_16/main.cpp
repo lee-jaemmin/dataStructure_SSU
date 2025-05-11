@@ -1,7 +1,8 @@
-#include "aryQueue.h"
+#include "aryQueue_cnt.h"
 #include <iostream>
 
 using namespace std;
+//20212861 이재민
 
 int main()
 {
