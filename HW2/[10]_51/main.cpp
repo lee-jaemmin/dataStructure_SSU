@@ -1,5 +1,5 @@
 #include <iostream>
-#include "hashTable.h"
+#include "linkedListHash.h"
 #include "Cphone.h"
 
 using namespace std;
@@ -16,31 +16,8 @@ int stringToint(const string &strName)
 
 int main()
 {
-    Table <int, int> t; // Table 객체 선언(배열로 하지 ㅁr..)
-    Table <int, CPhone> t2;
+    Table <int, CPhone> t;
     int birth, i;
-
-    /*
-    for(i = 0; i < 7; i++) {
-        cin >> birth;
-        t.insert(birth, i);
-    }
-    cout << endl << "4번 dump" << endl;
-    t.dump();
-    cout << endl;
-    
-    //8진수 -10진수 혼동 때문에 stoi사용!!
-    t.deleteKey(stoi("010101")); // index 3 삭제
-    t.deleteKey(stoi("010111")); // index 2 삭제
-
-    birth = 100102; // 모듈러 연산 시 2 나옴
-    i = 0;
-    t.insert(birth, i); 
-
-    cout << endl << "5번 dump" << endl;
-    t.dump();
-*/
-    //t2 데이터 추가
     string name;
 
     for(i = 0; i < 3; i++) {
@@ -53,9 +30,9 @@ int main()
 
         int newName = stringToint(name);
         
-        t2.insert(newName, phone);
+        t.insert(newName, phone);
     }
-    t2.dump();
+    t.dump();
 
     //t2 에서 찾을 key, data 입력 받기
     CPhone phone;
@@ -65,7 +42,7 @@ int main()
     
     
     
-    if(t2.lookup(target, phone)) {
+    if(t.lookup(target, phone)) {
         cout << phone.getName() << "\t";
         cout << phone.getBirth();
     }
