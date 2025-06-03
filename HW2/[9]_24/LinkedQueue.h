@@ -38,7 +38,7 @@ void Queue <queueElementType>::enqueue(queueElementType elem)
     n->data  = elem; // 데이터 삽입
     n->next = 0;
 
-    if(r == 0) {
+    if(f == 0) {
         f = n;
     } else {
         r->next = n;

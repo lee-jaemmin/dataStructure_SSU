@@ -48,20 +48,20 @@ void Table <tableKeyType, tableDataType>::insert(tableKeyType key, tableDataType
     int pos(search(key));
     if(pos == entries) // 없으면
     {
-        entries++;
-        T[pos].key = key;
-        T[pos].data = data;
+        entries++; // 개수 하나 추가
     }
+    T[pos].key = key; // key 있으면 사실상 필요없으나, 가독성을 위해서.
+    T[pos].data = data; // key 유무에 관계없이 반드시 필요.
 }
 
 template <class tableKeyType, class tableDataType>
-bool Table <tableKeyType, tableDataType>::lookup(tableKeyType key, tableDataType &data)
+bool Table <tableKeyType, tableDataType>::lookup(tableKeyType key, tableDataType &data) // 주소로 받음에 주의
 {
     int pos(search(key)); // key의 위치 찾기
     if(pos == entries) { // 없으면
         return false;
     } else { // 있으면
-        data = T[pos].data; // data에 key 위치의 데이터 넣기
+        data = T[pos].data; // 파라미터로 받은 애를 변경
         return true;
     }
 }

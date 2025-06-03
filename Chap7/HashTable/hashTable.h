@@ -55,7 +55,7 @@ bool Table <tableKeyType, tableDataType>::search(int &pos, const tableKeyType &t
         }
         return false;
     }
-    //Emtpy 뒤에 elements가 더 남아있을 수 있음. 나중에 처리   
+    //Empty 뒤에 elements가 더 남아있을 수 있음. 나중에 처리   
 }
 
 template <class tableKeyType, class tableDataType>
@@ -71,7 +71,7 @@ Table <tableKeyType, tableDataType>::Table()
 template <class tableKeyType, class tableDataType>
 void Table <tableKeyType, tableDataType>::insert(tableKeyType &key, tableDataType &data)
 {
-    assert(entries < MAX_TABLE - 1); // 마지막에는 Empty가 있어야하니까. Emtpy를 찾아야 해싱이 끝남.
+    assert(entries < MAX_TABLE - 1); // 하나의 Empty가 있을 자리 필요 (종료 조건) => -1 해줘야. Empty를 찾아야 서칭이 끝나니까.
     int pos(hash(key));
 
     if(!search(pos, key)) { // search의 return 값이 false면 (=없으면, = 새로운 거 넣어야하면)
@@ -101,7 +101,7 @@ bool Table <tableKeyType, tableDataType>::lookup(tableKeyType &key, tableDataTyp
 
 template <class tableKeyType, class tableDataType>
 void Table <tableKeyType, tableDataType>::deleteKey(const tableKeyType &key)
-{
+{ㄴㄴ
     int pos(hash(key)); // 지우고 싶은 데이터 해시
     if(search(pos, key)) { // 지우고 싶은 거 찾으면
         T[pos].slotStatus = Deleted; // 상태 바꾸고

@@ -34,7 +34,7 @@ void Queue <queueElementType>::enqueue(queueElementType elem)
     nodePtr n = new Node;
     assert(n); // n 잘 만들어졌나 확인
     n->data  = elem; // 데이터 삽입
-    n->next = 0;
+    n->next = 0; // 두 케이스가 깔끔하게 안 합쳐짐. 직접 넣어주는 게 깔끔.
 
     if(r == 0) {
         f = n;
