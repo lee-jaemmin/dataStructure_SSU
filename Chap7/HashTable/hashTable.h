@@ -53,9 +53,9 @@ bool Table <tableKeyType, tableDataType>::search(int &pos, const tableKeyType &t
         if(T[pos].slotStatus == InUse && T[pos].key == target) { // 상태가 InUse고 target과 같은 key 있으면
             return true;
         }
-        return false;
     }
-    //Empty 뒤에 elements가 더 남아있을 수 있음. 나중에 처리   
+    return false; // pos == 처음 만난 Empty. 따라서 현재 pos 뒤에 element가 남아있을 수도 있음.
+                  // insert할 때 pos=hash(key); 를 한 번 더 실행해서 해결     
 }
 
 template <class tableKeyType, class tableDataType>
@@ -74,9 +74,12 @@ void Table <tableKeyType, tableDataType>::insert(tableKeyType &key, tableDataTyp
     assert(entries < MAX_TABLE - 1); // 하나의 Empty가 있을 자리 필요 (종료 조건) => -1 해줘야. Empty를 찾아야 서칭이 끝나니까.
     int pos(hash(key));
 
-    if(!search(pos, key)) { // search의 return 값이 false면 (=없으면, = 새로운 거 넣어야하면)
-        pos = hash(key);
+    if(!search(pos, key)) { // Empty 만나서 나왔으면 => 없다고 판단
+        pos = hash(key); // search하느라 바뀐 pos 값 다시 원위치
     }
+    // search = false : pos는 원래 원위치
+    // search = true: pos는 찾은은 위치
+
     while(T[pos].slotStatus == InUse) { // 차 있으면 (사용 중이면)
         pos = probe(pos); // 선형 탐색.
     }
@@ -101,7 +104,7 @@ bool Table <tableKeyType, tableDataType>::lookup(tableKeyType &key, tableDataTyp
 
 template <class tableKeyType, class tableDataType>
 void Table <tableKeyType, tableDataType>::deleteKey(const tableKeyType &key)
-{ㄴㄴ
+{
     int pos(hash(key)); // 지우고 싶은 데이터 해시
     if(search(pos, key)) { // 지우고 싶은 거 찾으면
         T[pos].slotStatus = Deleted; // 상태 바꾸고
