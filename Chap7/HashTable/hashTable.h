@@ -76,15 +76,14 @@ void Table <tableKeyType, tableDataType>::insert(tableKeyType &key, tableDataTyp
 
     if(!search(pos, key)) { // Empty 만나서 나왔으면 => 없다고 판단
         pos = hash(key); // search하느라 바뀐 pos 값 다시 원위치
+        // search = false : pos는 원래 원위치
+        while(T[pos].slotStatus == InUse) { // 차 있으면 (사용 중이면)
+            pos = probe(pos); // 선형 탐색.
+        }
     }
-    // search = false : pos는 원래 원위치
-    // search = true: pos는 찾은은 위치
-
-    while(T[pos].slotStatus == InUse) { // 차 있으면 (사용 중이면)
-        pos = probe(pos); // 선형 탐색.
-    }
+    // Empty or delete 만나서 나옴
+    // search가 true 였으면 그 자리에 덮어쓴다.
     entries++; // 개수 증가
-    //deleted나 empty 만나서 나옴.
     T[pos].slotStatus = InUse;
     T[pos].key = key;
     T[pos].data = data;
