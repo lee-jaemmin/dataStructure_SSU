@@ -1,6 +1,7 @@
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 #include <assert.h>
+//20212861 이재민
 
 template <class btElementType>
 class BinaryTree 
@@ -50,7 +51,7 @@ void BinaryTree <btElementType> :: insert(const btElementType &data)
     // 삽입은 공통 실행 (갱신 vs 새로운 삽입)
     treeData = data;
     // 만약 빈 트리였으면 
-    if(nullTree) { // isEmpty() 사용이 더 좋음.
+    if(nullTree) {
         nullTree = false;
         leftChild = new BinaryTree;
         rightChild = new BinaryTree;

@@ -74,15 +74,16 @@ void Table <tableKeyType, tableDataType>::insert(tableKeyType &key, tableDataTyp
     assert(entries < MAX_TABLE - 1); // 하나의 Empty가 있을 자리 필요 (종료 조건) => -1 해줘야. Empty를 찾아야 서칭이 끝나니까.
     int pos(hash(key));
 
-    if(!search(pos, key)) { // Empty 만나서 나왔으면 => 없다고 판단
+    if(!search(pos, key)) { // search가 false이면 => Empty 만나서 나왔으면 
         pos = hash(key); // search하느라 바뀐 pos 값 다시 원위치
-        // search = false : pos는 원래 원위치
         while(T[pos].slotStatus == InUse) { // 차 있으면 (사용 중이면)
             pos = probe(pos); // 선형 탐색.
         }
     }
-    // Empty or delete 만나서 나옴
-    // search가 true 였으면 그 자리에 덮어쓴다.
+    // pos가 두 가지 경우임
+    // case1: search == false: while문 돌면서 처음 만난 Empty, Deleted 자리
+    // case2: search == true: search에서 바뀐 pos 그대로
+
     entries++; // 개수 증가
     T[pos].slotStatus = InUse;
     T[pos].key = key;
@@ -90,11 +91,11 @@ void Table <tableKeyType, tableDataType>::insert(tableKeyType &key, tableDataTyp
 }
 
 template <class tableKeyType, class tableDataType>
-bool Table <tableKeyType, tableDataType>::lookup(tableKeyType &key, tableDataType &data)
+bool Table <tableKeyType, tableDataType>::lookup(tableKeyType &key, tableDataType &data) 
 {
     int pos(hash(key)); // 해싱하기
     if(search(pos, key)) { // 있으면
-        data = T[pos].data;
+        data = T[pos].data; // 원본 데이터를 바꾸는 데에 주의
         return true;
     } else { // 없으면
         return false;
