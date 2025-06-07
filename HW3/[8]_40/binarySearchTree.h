@@ -11,7 +11,7 @@ class BST : public BinaryTree <btElementType>
         virtual void insert(const btElementType &data);
         virtual BinaryTree <btElementType>* retrieve(const btElementType &d);
         // 손자 클래스에서 재사용할 수도 잇으므로 virtual 사용
-        // 반환형이 BST* 이면 재사용성 떨어짐 BT* 여야 BT 상속 받은 모든 클래스 사용 가능
+        // 반환형이 BST* 이면 재사용성 떨어짐 BT* 여야 후에 BT로부터 상속된 모든 클래스에서 사용 가능
         // d를 넣으면 그 주소를 찾아오는 함수
         using BinaryTree <btElementType> :: nullTree;
         using BinaryTree <btElementType> :: treeData;
@@ -26,7 +26,7 @@ void BST <btElementType> :: insert(const btElementType &d)
 {
     if(nullTree) { // this->BST; BST의 isEmpty == BT의 isEmpty
         nullTree = false;
-        leftChild = new BST; // 여기다가 BT를 쓰면 leftChild->retrieve나 insert시 BT의 함수가 호출됨 -> 오류.
+        leftChild = new BST; // 여기다가 BT를 쓰면 leftChild->retrieve나 나중에 BT의 함수가 호출됨 -> 오류.
         rightChild = new BST;
         treeData = d;
     }
@@ -46,7 +46,7 @@ template <class btElementType>
 BinaryTree <btElementType>* BST <btElementType> :: retrieve(const btElementType &d)
 {
     if(nullTree || d == treeData) {
-        return this;
+        return this; // 내 자신을 가리키는 포인터 : this
     } 
     else if (d < treeData) {
         return ((BST <btElementType> *) leftChild)->retrieve(d);

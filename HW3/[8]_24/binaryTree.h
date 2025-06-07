@@ -88,7 +88,7 @@ void BinaryTree <btElementType> :: makeRight(BinaryTree* T1)
 {
     assert(!isEmpty()); // 나는 Empty가 아니고
     assert(right()->isEmpty()); // leftchild는 비어있어야 해
-    delete right(); // 왼쪽 자식 (현재 nullTree인) 지우기
+    delete right(); // 오른쪽 자식 (현재 nullTree인) 지우기
     //댕글링 포인터
     rightChild = T1;
 }
