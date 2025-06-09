@@ -111,7 +111,7 @@ void Table <tableKeyType, tableDataType>::deleteKey(const tableKeyType &key)
             if(p->next->key == key) { // 내 다음거가 지울 녀석이면
                 Link deleteSlot = p->next; // 저장
                 p->next = p->next->next; // 한칸뒤로
-                delete deleteSlot;// 삭제제
+                delete deleteSlot;// 삭제
                 break;
             }
         }
