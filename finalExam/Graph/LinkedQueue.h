@@ -1,3 +1,4 @@
+//20212861 이재민
 template <class queueElementType>
 class Queue
 {
@@ -50,7 +51,7 @@ queueElementType Queue <queueElementType>::dequeue()
     assert(!isEmpty());   
     nodePtr delNode = new Node;
     delNode = f;
-    queueElementType temp delNode->data;
+    queueElementType temp = delNode->data;
     f = f->next;
     return temp;
 }
